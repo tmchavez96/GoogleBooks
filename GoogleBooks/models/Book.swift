@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct BookResponse: Decodable{
     var totalItems:Int
@@ -21,15 +22,20 @@ struct Book: Decodable{
         case id
         case details = "volumeInfo"
     }
+    
+    init(coreBook: BookStorage){
+        id = coreBook.id!
+        details = BookDetails(coreBook)
+    }
 }
 
 struct BookDetails: Decodable{
-    var title: String
+    var title: String?
     var authors: [String]
     var pageCount: Int?
     var desc: String?
     var rating: Double?
-    var image: BookImage
+    var image: BookImage?
     private enum CodingKeys:  String, CodingKey {
         case title
         case authors
@@ -38,8 +44,20 @@ struct BookDetails: Decodable{
         case rating = "averageRating"
         case image = "imageLinks"
     }
+    init(_ coreBook: BookStorage){
+        title = coreBook.title ?? "Title N/A"
+        authors = [coreBook.author ?? "Author N/A"]
+        pageCount = Int(coreBook.pageCount)
+        desc = coreBook.desc
+        rating = coreBook.rating
+        image = BookImage(coreBook)
+    }
 }
 
 struct BookImage: Decodable{
     var thumbnail: String
+    
+    init(_ coreBook: BookStorage){
+        thumbnail = coreBook.imageURL ?? ""
+    }
 }

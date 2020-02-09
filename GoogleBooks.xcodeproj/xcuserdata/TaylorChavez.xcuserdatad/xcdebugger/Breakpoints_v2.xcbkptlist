@@ -3,4 +3,114 @@
    uuid = "C1D1BA8F-E7A8-41B0-8BF3-CC30D4FA2930"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBooks/viewController/DetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "DetailsViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - bd5dc14ecb16b4b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "GoogleBooks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 37bf6bc020cb58c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "GoogleBooks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 8cad76fecf275db5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "GoogleBooks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "67">
+               </Location>
+               <Location
+                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 24068d209d2b9c0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "GoogleBooks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - b5f3d9ccc193b249"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBooks.DetailsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GoogleBooks.DetailsViewController"
+                  moduleName = "GoogleBooks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "579">
+               </Location>
+               <Location
+                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 444912fdb3f3ee01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBooks.DetailsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GoogleBooks.DetailsViewController&gt;"
+                  moduleName = "GoogleBooks"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "511">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
