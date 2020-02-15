@@ -12,15 +12,11 @@ class FavoritesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var books:[Book] = [] {
-        didSet{
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    
+    var viewModel = BookViewModel()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setup()
     }
@@ -32,19 +28,23 @@ class FavoritesViewController: UIViewController {
     
     func setup(){
         tableView.tableFooterView = UIView(frame: .zero)
-        books = BookManager.shared.load()
+        NotificationCenter.default.addObserver(forName: Notification.Name("favoritesUpdated"), object: nil, queue: .main) {
+            [weak self] _ in
+                   self?.tableView.reloadData()
+               }
+        viewModel.getFavs()
     }
 
 }
 
 extension FavoritesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
+        return viewModel.favBooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath) as! FavoritesCell
-        let cellBook = books[indexPath.row]
+        let cellBook = viewModel.favBooks[indexPath.row]
         if let img =  cellBook.details.image{
             httpHandler.shared.getImage(img.thumbnail) { result in
                 cell.listImage.image = result
@@ -66,20 +66,19 @@ extension FavoritesViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let cellBook = books[indexPath.row]
+        let cellBook = viewModel.favBooks[indexPath.row]
         
-        let mapVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        mapVC.curBook = cellBook
-        
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        detailVC.curBook = cellBook
+        detailVC.viewModel = viewModel
         navigationController?.view.backgroundColor = .white //remove black flicker on top right
-        navigationController?.pushViewController(mapVC, animated: true) //push onto the stack
+        navigationController?.pushViewController(detailVC, animated: true) //push onto the stack
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let cellBook = books[indexPath.row]
-            BookManager.shared.remove(cellBook)
-            books.remove(at: indexPath.row)
+            let cellBook = viewModel.favBooks[indexPath.row]
+            viewModel.delBook(book:cellBook)
         }
     }
 }

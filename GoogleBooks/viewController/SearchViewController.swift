@@ -10,20 +10,15 @@ import UIKit
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var CollectionView: UICollectionView!
-    
-    var Books:[Book] = [] {
-        didSet{
-            DispatchQueue.main.async {
-                self.CollectionView.reloadData()
-            }
-        }
-    }
+    var viewModel = BookViewModel()
+   
     var firstLoad = true
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        viewModel.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -31,17 +26,19 @@ class SearchViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController?.searchBar.delegate = self as UISearchBarDelegate
-        reloadBooks("Harry Potter")
+        //reloadBooks("Harry Potter")
+        viewModel.searchBooks("Harry Potter")
     }
     
-    func reloadBooks(_ search: String){
-        httpHandler.shared.searchFor(search) {
-            [weak self] result in
-            self?.Books = result
-            print("found \(result.count) books")
-            self?.firstLoad = false
-        }
-    }
+//    func reloadBooks(_ search: String){
+//        httpHandler.shared.searchFor(search) {
+//            [weak self] result in
+//            self?.Books = result
+//            print("found \(result.count) books")
+//            //move firstLoad to protocol extension
+//            self?.firstLoad = false
+//        }
+//    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -51,7 +48,8 @@ extension SearchViewController: UISearchBarDelegate {
         guard let search = searchBar.text else {
             return
         }
-        reloadBooks(search)
+        //reloadBooks(search)
+        viewModel.searchBooks(search)
     }
     
     
@@ -59,20 +57,20 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(Books.count == 0 && !firstLoad){
-            let mapVC = storyboard?.instantiateViewController(withIdentifier: "NoResults") as! NoResults
+        if(viewModel.searchedBooks.count == 0 && !firstLoad){
+            let noresVC = storyboard?.instantiateViewController(withIdentifier: "NoResults") as! NoResults
             navigationController?.view.backgroundColor = .white //remove black flicker on top right
-            navigationController?.pushViewController(mapVC, animated: true)
+            navigationController?.pushViewController(noresVC, animated: true)
             
         }
-        return Books.count
+        firstLoad = false
+        return viewModel.searchedBooks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookSearchCell", for: indexPath) as! BookSearchCell
-        let cellBook = Books[indexPath.row]
+        let cellBook = viewModel.searchedBooks[indexPath.row]
         cell.CellTitle.text = cellBook.details.title
-        //cell.CellTitle.text = "ha"
         if let img = cellBook.details.image{
             httpHandler.shared.getImage(img.thumbnail) { result in
                 if let image:UIImage = result{
@@ -80,13 +78,12 @@ extension SearchViewController: UICollectionViewDataSource{
                 }
             }
         }
+        cell.layer.cornerRadius = 20.0
+        cell.layer.borderWidth = 2.0
+        cell.layer.borderColor =  CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
         return cell
     }
     
-    
-}
-
-extension SearchViewController: UICollectionViewDelegate{
     
 }
 
@@ -99,15 +96,25 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     //handles touch events
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let mapVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        mapVC.curBook = Books[indexPath.row]
-        
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+        detailVC.curBook = viewModel.searchedBooks[indexPath.row]
+        detailVC.viewModel = viewModel
         navigationController?.view.backgroundColor = .white //remove black flicker on top right
-        navigationController?.pushViewController(mapVC, animated: true) //push onto the stack
+        navigationController?.pushViewController(detailVC, animated: true) //push onto the stack
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     }
+
     
+}
+
+
+extension SearchViewController: bookSearcher{
+    func updateView() {
+        DispatchQueue.main.async {
+            self.CollectionView.reloadData()
+        }
+    }
 }
