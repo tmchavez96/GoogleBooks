@@ -18,8 +18,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var detailsDesc: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
-     var curBook: Book!
-    
+    var curBook: Book!
+    var viewModel: BookViewModel!
     var isFavorite: Bool = false {
         didSet{
             setup()
@@ -28,10 +28,10 @@ class DetailsViewController: UIViewController {
     
     @IBAction func favoriteToggled(_ sender: Any) {
         if(!isFavorite){
-            BookManager.shared.saveBook(curBook)
+            viewModel.saveBook(book: curBook)
             favoriteButton.setTitle("Remove from favorites", for: .normal)
         }else{
-            BookManager.shared.remove(curBook)
+            viewModel.delBook(book: curBook)
             favoriteButton.setTitle("Add to favorites", for: .normal)
         }
         isFavorite = !isFavorite
@@ -73,11 +73,7 @@ class DetailsViewController: UIViewController {
     }
     
     func checkFavorites(){
-        if(BookManager.shared.checkForBook(curBook)){
-            isFavorite = true
-        }else{
-            isFavorite = false
-        }
+        isFavorite = viewModel.checkForBook(book: curBook)
     }
     
 }

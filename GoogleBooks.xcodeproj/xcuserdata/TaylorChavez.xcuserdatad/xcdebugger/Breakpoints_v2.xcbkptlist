@@ -7,57 +7,57 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B"
-            shouldBeEnabled = "Yes"
+            uuid = "78E7773B-6D3F-4755-A96D-2ED3463F2F84"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoogleBooks/viewController/DetailsViewController.swift"
+            filePath = "GoogleBooks/viewController/FavoritesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "DetailsViewController"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "FavoritesViewController"
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - bd5dc14ecb16b4b0"
+                  uuid = "78E7773B-6D3F-4755-A96D-2ED3463F2F84 - 364481c98f562dee"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  symbolName = "GoogleBooks.FavoritesViewController.tableView.getter : Swift.Optional&lt;__C.UITableView&gt;"
                   moduleName = "GoogleBooks"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/repo/GoogleBooks/GoogleBooks/viewController/FavoritesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
                   offsetFromSymbolStart = "88">
                </Location>
                <Location
-                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 37bf6bc020cb58c4"
+                  uuid = "78E7773B-6D3F-4755-A96D-2ED3463F2F84 - 7d45298e159451e2"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  symbolName = "GoogleBooks.FavoritesViewController.tableView.setter : Swift.Optional&lt;__C.UITableView&gt;"
                   moduleName = "GoogleBooks"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/repo/GoogleBooks/GoogleBooks/viewController/FavoritesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
                   offsetFromSymbolStart = "104">
                </Location>
                <Location
-                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 8cad76fecf275db5"
+                  uuid = "78E7773B-6D3F-4755-A96D-2ED3463F2F84 - ecb38151c72296d3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  symbolName = "GoogleBooks.FavoritesViewController.tableView.modify : Swift.Optional&lt;__C.UITableView&gt;"
                   moduleName = "GoogleBooks"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/repo/GoogleBooks/GoogleBooks/viewController/FavoritesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -65,49 +65,49 @@
                   offsetFromSymbolStart = "67">
                </Location>
                <Location
-                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 24068d209d2b9c0e"
+                  uuid = "78E7773B-6D3F-4755-A96D-2ED3463F2F84 - 12b16c8e0413a6f9"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GoogleBooks.DetailsViewController.detailsRating.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  symbolName = "GoogleBooks.FavoritesViewController.tableView.modify : Swift.Optional&lt;__C.UITableView&gt; with unmangled suffix &quot;.resume.0&quot;"
                   moduleName = "GoogleBooks"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/repo/GoogleBooks/GoogleBooks/viewController/FavoritesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
                   offsetFromSymbolStart = "76">
                </Location>
                <Location
-                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - b5f3d9ccc193b249"
+                  uuid = "78E7773B-6D3F-4755-A96D-2ED3463F2F84 - 9827f025f5041c30"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GoogleBooks.DetailsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GoogleBooks.DetailsViewController"
+                  symbolName = "GoogleBooks.FavoritesViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GoogleBooks.FavoritesViewController"
                   moduleName = "GoogleBooks"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/repo/GoogleBooks/GoogleBooks/viewController/FavoritesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "579">
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "164">
                </Location>
                <Location
-                  uuid = "CD8FBE1A-C37A-4441-9097-CFCA31EE308B - 444912fdb3f3ee01"
+                  uuid = "78E7773B-6D3F-4755-A96D-2ED3463F2F84 - 7bbe2aa105314970"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GoogleBooks.DetailsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GoogleBooks.DetailsViewController&gt;"
+                  symbolName = "GoogleBooks.FavoritesViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GoogleBooks.FavoritesViewController&gt;"
                   moduleName = "GoogleBooks"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/GoogleBooks/viewController/DetailsViewController.swift"
+                  urlString = "file:///Users/TaylorChavez/Desktop/xCode%20projects/GoogleBooks/repo/GoogleBooks/GoogleBooks/viewController/FavoritesViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "511">
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "92">
                </Location>
             </Locations>
          </BreakpointContent>
