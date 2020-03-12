@@ -39,18 +39,18 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.favBooks.count
+        return viewModel.getFavoriteCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath) as! FavoritesCell
-        let cellBook = viewModel.favBooks[indexPath.row]
-        if let img =  cellBook.details.image{
+        let cellBook = viewModel.getFavBookFromIndex(indexPath.row)
+        if let img =  cellBook?.details.image{
             httpHandler.shared.getImage(img.thumbnail) { result in
                 cell.listImage.image = result
             }
         }
-        cell.listTitle.text = cellBook.details.title
+        cell.listTitle.text = cellBook?.details.title
         return cell
     }
     
@@ -66,7 +66,7 @@ extension FavoritesViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let cellBook = viewModel.favBooks[indexPath.row]
+        guard let cellBook = viewModel.getFavBookFromIndex(indexPath.row) else {return}
         
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
         detailVC.curBook = cellBook

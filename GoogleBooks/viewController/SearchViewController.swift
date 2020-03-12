@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController?.searchBar.delegate = self as UISearchBarDelegate
         //reloadBooks("Harry Potter")
-        viewModel.searchBooks("Harry Potter")
+        viewModel.searchBooks("oprah")
     }
     
 //    func reloadBooks(_ search: String){
@@ -57,21 +57,20 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(viewModel.searchedBooks.count == 0 && !firstLoad){
+        if(viewModel.getSearchCount() == 0 && !firstLoad){
             let noresVC = storyboard?.instantiateViewController(withIdentifier: "NoResults") as! NoResults
             navigationController?.view.backgroundColor = .white //remove black flicker on top right
             navigationController?.pushViewController(noresVC, animated: true)
-            
         }
         firstLoad = false
-        return viewModel.searchedBooks.count
+        return viewModel.getSearchCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookSearchCell", for: indexPath) as! BookSearchCell
-        let cellBook = viewModel.searchedBooks[indexPath.row]
-        cell.CellTitle.text = cellBook.details.title
-        if let img = cellBook.details.image{
+        let cellBook = viewModel.getSearchBookFromIndex(indexPath.row)
+        cell.CellTitle.text = cellBook?.details.title
+        if let img = cellBook?.details.image{
             httpHandler.shared.getImage(img.thumbnail) { result in
                 if let image:UIImage = result{
                     cell.CellImage.image = image
@@ -97,7 +96,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     //handles touch events
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        detailVC.curBook = viewModel.searchedBooks[indexPath.row]
+        guard let currentBook = viewModel.getSearchBookFromIndex(indexPath.row) else { return }
+        detailVC.curBook = currentBook
         detailVC.viewModel = viewModel
         navigationController?.view.backgroundColor = .white //remove black flicker on top right
         navigationController?.pushViewController(detailVC, animated: true) //push onto the stack

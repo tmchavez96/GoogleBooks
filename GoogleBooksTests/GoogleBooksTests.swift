@@ -37,55 +37,71 @@ class GoogleBooksTests: XCTestCase {
         let encodeStr = UrlService.base + (testInput.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
         let url = URL(string: encodeStr)
         let testResult = UrlService.getSearchUrl(testInput)!
-        XCTAssert(url == testResult)
-    }
-    
-    func testNoResults(){
-        let testController:NoResults = NoResults();
-        testController.viewDidLoad()
-        XCTAssertNotNil(testController)
+        XCTAssertEqual(url,testResult,"Url Service Failer")
     }
     
     func testHttpHandlerSearch(){
-        httpHandler.shared.searchFor("Harry Potter") { result in
-            XCTAssert(result.count > 0)
+        var searchResults:[Book] = []
+        let exception = self.expectation(description: "networking")
+        httpHandler.shared.searchFor("Harry Potter") { searchRes in
+            searchResults = searchRes
+            exception.fulfill()
         }
+        waitForExpectations(timeout: 30, handler: nil)
+        XCTAssert(searchResults.count > 0, "search failed" )
     }
     
     func testHttpHandlerImageTask(){
         let testImageUrl = "https://i.imgur.com/NXW5SEh.jpg"
-        httpHandler.shared.getImage(testImageUrl) { (result) in
-            XCTAssertNotNil(result)
+        var test1Image:UIImage?
+        var test2Image:UIImage?
+        let exception = self.expectation(description: "networking")
+        httpHandler.shared.getImage(testImageUrl) { (result1) in
+            test1Image = result1
+            exception.fulfill()
         }
+        let exception2 = self.expectation(description: "networking again ")
         let badUrl = "gibberish"
-        httpHandler.shared.getImage(badUrl) { (result) in
-            XCTAssertNil(result)
+        httpHandler.shared.getImage(badUrl) { (result2) in
+            test2Image = result2
+            exception2.fulfill()
         }
+        waitForExpectations(timeout: 30, handler: nil)
+        XCTAssertNotNil(test1Image,"couldn't get image")
+        XCTAssertNil(test2Image,"bad request worked?")
     }
     
     
     func testBookManagerSaveAndLoad(){
-        httpHandler.shared.searchFor("Harry Potter") { result in
-            BookManager.shared.saveBook(result[0])
-            let savedBooks = BookManager.shared.load()
-            XCTAssert(savedBooks.count > 0)
+        let exception = self.expectation(description: "networking")
+        var savedBooks:[Book] = []
+        httpHandler.shared.searchFor("Harry Potter") { saveResult in
+            if(saveResult.count > 0){
+                BookManager.shared.saveBook(saveResult[0])
+                savedBooks = BookManager.shared.load()
+            }
+            exception.fulfill()
         }
+        waitForExpectations(timeout: 30, handler: nil)
+        XCTAssert(savedBooks.count > 0)
     }
     
     func testBookManagerRemoveAndCheck(){
-        httpHandler.shared.searchFor("Harry Potter") { result in
-            let test1 =  BookManager.shared.checkForBook(result[0])
-            XCTAssert(!test1)
-            BookManager.shared.remove(result[0])
-            let test2 = BookManager.shared.checkForBook(result[0])
-            XCTAssert(!test2)
+        let exception = self.expectation(description: "networking")
+        var checkResult:Bool = false;
+        var checkEmptyResult:Bool = false;
+        httpHandler.shared.searchFor("Harry Potter") { removeResult in
+            if (removeResult.count > 0) {
+                BookManager.shared.saveBook(removeResult[0])
+                checkResult =  BookManager.shared.checkForBook(removeResult[0])
+                BookManager.shared.remove(removeResult[0])
+                checkEmptyResult = !BookManager.shared.checkForBook(removeResult[0])
+            }
+            exception.fulfill()
         }
-    }
-
-    
-    func testSearchController(){
-        // do we need to test button pushes and others?
-        XCTAssertNotNil(searchVC)
+        waitForExpectations(timeout: 30, handler: nil)
+        XCTAssert(checkResult," Saved Book wasn't found")
+        XCTAssertNil(checkEmptyResult, "Book found after removal")
     }
 
 }

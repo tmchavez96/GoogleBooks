@@ -25,8 +25,32 @@ class BookViewModel{
         }
     }
     
+    //MARK: Getters / Setters
+    func getSearchCount() -> Int{
+        return searchedBooks.count
+    }
     
+    func getFavoriteCount() -> Int {
+        return favBooks.count
+    }
     
+    func getSearchBookFromIndex(_ index:Int) -> Book?{
+        if(index < searchedBooks.count){
+            return searchedBooks[index]
+        }else{
+            return nil
+        }
+    }
+    
+    func getFavBookFromIndex(_ index:Int) -> Book?{
+        if(index < favBooks.count){
+            return favBooks[index]
+        }else{
+            return nil
+        }
+    }
+    
+    //MARK: Network functions
     func searchBooks(_ query:String){
         httpHandler.shared.searchFor(query) {
             [weak self] result in
@@ -36,6 +60,7 @@ class BookViewModel{
         }
     }
     
+    //MARK: Core Data Functions
     func getFavs(){
         favBooks = BookManager.shared.load()
     }
