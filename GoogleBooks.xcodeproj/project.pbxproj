@@ -20,6 +20,9 @@
 		B20EA48B23EF139500671478 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20EA48A23EF139500671478 /* Book.swift */; };
 		B25EFA8C2414141600F65C82 /* GoogleBooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25EFA8B2414141600F65C82 /* GoogleBooksTests.swift */; };
 		B25EFAE4241A698F00F65C82 /* BookViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25EFAE3241A698F00F65C82 /* BookViewModelTests.swift */; };
+		B28E05ED242263E3003BB352 /* MockHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28E05EC242263E3003BB352 /* MockHandler.swift */; };
+		B28E05EF24226564003BB352 /* MockDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28E05EE24226564003BB352 /* MockDataTest.swift */; };
+		B28E05F124227465003BB352 /* HandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28E05F024227465003BB352 /* HandlerProtocol.swift */; };
 		B298493A23F8775500A85D64 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298493923F8775500A85D64 /* BookViewModel.swift */; };
 		B2A0B29223EF659500E4FC43 /* BookSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0B29123EF659500E4FC43 /* BookSearchCell.swift */; };
 		B2D7688D23F08ECB00F16CC7 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D7688C23F08ECB00F16CC7 /* DetailsViewController.swift */; };
@@ -56,6 +59,9 @@
 		B25EFA8B2414141600F65C82 /* GoogleBooksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleBooksTests.swift; sourceTree = "<group>"; };
 		B25EFA8D2414141600F65C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B25EFAE3241A698F00F65C82 /* BookViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModelTests.swift; sourceTree = "<group>"; };
+		B28E05EC242263E3003BB352 /* MockHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandler.swift; sourceTree = "<group>"; };
+		B28E05EE24226564003BB352 /* MockDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataTest.swift; sourceTree = "<group>"; };
+		B28E05F024227465003BB352 /* HandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerProtocol.swift; sourceTree = "<group>"; };
 		B298493923F8775500A85D64 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		B2A0B29123EF659500E4FC43 /* BookSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchCell.swift; sourceTree = "<group>"; };
 		B2D7688C23F08ECB00F16CC7 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 				B20EA48623EF104200671478 /* UrlService.swift */,
 				B20EA48823EF112000671478 /* httpHandler.swift */,
 				B2D7688E23F0930E00F16CC7 /* BookManager.swift */,
+				B28E05EC242263E3003BB352 /* MockHandler.swift */,
+				B28E05F024227465003BB352 /* HandlerProtocol.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 				B25EFA8B2414141600F65C82 /* GoogleBooksTests.swift */,
 				B25EFA8D2414141600F65C82 /* Info.plist */,
 				B25EFAE3241A698F00F65C82 /* BookViewModelTests.swift */,
+				B28E05EE24226564003BB352 /* MockDataTest.swift */,
 			);
 			path = GoogleBooksTests;
 			sourceTree = "<group>";
@@ -284,8 +293,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B28E05F124227465003BB352 /* HandlerProtocol.swift in Sources */,
 				B20EA48B23EF139500671478 /* Book.swift in Sources */,
 				B298493A23F8775500A85D64 /* BookViewModel.swift in Sources */,
+				B28E05ED242263E3003BB352 /* MockHandler.swift in Sources */,
 				B20EA46D23EF087100671478 /* SearchViewController.swift in Sources */,
 				B20EA48723EF104200671478 /* UrlService.swift in Sources */,
 				B20EA46923EF087100671478 /* AppDelegate.swift in Sources */,
@@ -306,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B25EFA8C2414141600F65C82 /* GoogleBooksTests.swift in Sources */,
+				B28E05EF24226564003BB352 /* MockDataTest.swift in Sources */,
 				B25EFAE4241A698F00F65C82 /* BookViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

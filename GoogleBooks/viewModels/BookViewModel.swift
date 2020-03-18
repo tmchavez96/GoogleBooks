@@ -14,6 +14,10 @@ protocol bookSearcher: class{
 
 class BookViewModel{
     weak var delegate: bookSearcher?
+    var viewModelHttpHandler:BookHandler!
+    init(isMock:Bool){
+        viewModelHttpHandler = (isMock ?  MockHandler() : httpHandler.shared)
+    }
     var searchedBooks:[Book] = [] {
         didSet{
             delegate?.updateView()
@@ -52,7 +56,7 @@ class BookViewModel{
     
     //MARK: Network functions
     func searchBooks(_ query:String){
-        httpHandler.shared.searchFor(query) {
+        viewModelHttpHandler.searchFor(query) {
             [weak self] result in
             self?.searchedBooks = result
             print("found \(result.count) books")

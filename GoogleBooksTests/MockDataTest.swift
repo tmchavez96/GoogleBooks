@@ -1,8 +1,8 @@
 //
-//  BookViewModelTests.swift
+//  MockDataTest.swift
 //  GoogleBooksTests
 //
-//  Created by Taylor Chavez on 3/12/20.
+//  Created by Taylor Chavez on 3/18/20.
 //  Copyright © 2020 Taylor Chavez. All rights reserved.
 //
 
@@ -10,10 +10,9 @@ import XCTest
 
 @testable import GoogleBooks
 
-class BookViewModelTests: XCTestCase {
+class MockDataTest: XCTestCase {
 
-    //MARK: All test are reliant on succesful test seach, due to lack of dummy models
-    var bookVM = BookViewModel(isMock: false)
+    var bookVM:BookViewModel = BookViewModel(isMock: true)
     override func setUp() {
         let bookList = BookManager.shared.load()
         for book in bookList {
@@ -21,10 +20,9 @@ class BookViewModelTests: XCTestCase {
         }
                
         bookVM.searchBooks("Oprah")
-        sleep(10)
+        sleep(1)
     }
 
-    //clear data every test
     override func tearDown() {
         let bookList = BookManager.shared.load()
         for book in bookList {
@@ -72,5 +70,6 @@ class BookViewModelTests: XCTestCase {
         bookVM.delBook(book:book)
         XCTAssert(!bookVM.checkForBook(book:book),"2nd check failed - delete failed")
     }
+
 
 }

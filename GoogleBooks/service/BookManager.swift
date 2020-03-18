@@ -77,7 +77,7 @@ final class BookManager{
             let coreBooks = try context.fetch(fetchRequest)
             if let core = coreBooks.first {
                 context.delete(core) //delete the core data object
-                print("Deleted City from Core: \(book.details.title)")
+                print("Deleted City from Core: \(book.details.title ?? "N/A")")
             }
             saveContext()
         } catch {

@@ -27,6 +27,11 @@ struct Book: Decodable{
         id = coreBook.id!
         details = BookDetails(coreBook)
     }
+    init(manualId:String, title:String,authors:[String], pageCount:Int, desc:String,rating:Double,
+         imagePath:String){
+        id = manualId
+        details = BookDetails(title: title, authors: authors, pageCount: pageCount, desc: desc, rating: rating, imagePath: imagePath)
+    }
 }
 
 struct BookDetails: Decodable{
@@ -52,6 +57,15 @@ struct BookDetails: Decodable{
         rating = coreBook.rating
         image = BookImage(coreBook)
     }
+    init( title:String,authors:[String], pageCount:Int, desc:String,rating:Double,
+          imagePath:String){
+        self.title = title
+        self.authors = authors
+        self.pageCount = pageCount
+        self.desc = desc
+        self.rating = rating
+        self.image = BookImage(imagePath)
+    }
 }
 
 struct BookImage: Decodable{
@@ -59,5 +73,8 @@ struct BookImage: Decodable{
     
     init(_ coreBook: BookStorage){
         thumbnail = coreBook.imageURL ?? ""
+    }
+    init(_ imagePath:String){
+        thumbnail = imagePath
     }
 }

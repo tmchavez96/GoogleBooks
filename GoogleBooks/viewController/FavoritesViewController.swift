@@ -13,7 +13,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     
-    var viewModel = BookViewModel()
+    var viewModel = BookViewModel(isMock: false)
     
     override func viewDidLoad() {
         

@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var CollectionView: UICollectionView!
-    var viewModel = BookViewModel()
+    var viewModel = BookViewModel(isMock: false)
    
     var firstLoad = true
     let searchController = UISearchController(searchResultsController: nil)

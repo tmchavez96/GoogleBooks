@@ -6,7 +6,7 @@
 //  Copyright © 2020 T
 import UIKit
 
-final class httpHandler {
+final class httpHandler:BookHandler {
     static let shared = httpHandler()
     private init () {}
     
