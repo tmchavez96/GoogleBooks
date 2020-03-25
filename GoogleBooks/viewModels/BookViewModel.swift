@@ -46,6 +46,18 @@ class BookViewModel{
         }
     }
     
+    func getSearchBookTupleFromIndex(_ index:Int) -> (id:String,title:String, author:String,pageCount:Int,desc:String?,rating:Double,thumbnail:String)?{
+        
+        if(index < searchedBooks.count){
+            let book =  searchedBooks[index]
+            let det = book.details
+            return ((id:book.id,title:det.title,author:det.authors[0],pageCount:det.pageCount,
+                     desc:det.desc,rating:det.rating,thumbnail:det.image?.thumbnail) as! (id: String, title: String, author: String, pageCount: Int, desc: String?, rating: Double, thumbnail: String))
+        }else{
+            return nil
+        }
+    }
+    
     func getFavBookFromIndex(_ index:Int) -> Book?{
         if(index < favBooks.count){
             return favBooks[index]
@@ -53,6 +65,7 @@ class BookViewModel{
             return nil
         }
     }
+    
     
     //MARK: Network functions
     func searchBooks(_ query:String){
