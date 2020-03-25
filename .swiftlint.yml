@@ -1,0 +1,32 @@
+disabled_rules: # rule identifiers to exclude from running
+  - variable_name
+  - nesting
+  - function_parameter_count
+  - trailing_whitespace
+  - mark
+  - closure_parameter_position
+  - force_cast
+  - large_tuple
+  - control_statement
+  - vertical_whitespace
+  - type_name
+  - unused_closure_parameter
+  - discarded_notification_center_observer
+  - unused_optional_binding
+opt_in_rules: # some rules are only opt-in
+  - control_statement
+  - empty_count
+  - trailing_newline
+  - colon
+  - comma
+
+line_length:
+  warning: 175
+  error: 180
+
+included: # paths to include during linting. `--path` is ignored if present.
+  - GoogleBooks
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+
+

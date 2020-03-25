@@ -26,7 +26,7 @@ class FavoritesViewController: UIViewController {
         setup()
     }
     
-    func setup(){
+    func setup() {
         tableView.tableFooterView = UIView(frame: .zero)
         NotificationCenter.default.addObserver(forName: Notification.Name("favoritesUpdated"), object: nil, queue: .main) {
             [weak self] _ in
@@ -37,7 +37,7 @@ class FavoritesViewController: UIViewController {
 
 }
 
-extension FavoritesViewController: UITableViewDataSource{
+extension FavoritesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getFavoriteCount()
     }
@@ -45,7 +45,7 @@ extension FavoritesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath) as! FavoritesCell
         let cellBook = viewModel.getFavBookFromIndex(indexPath.row)
-        if let img =  cellBook?.details.image{
+        if let img =  cellBook?.details.image {
             httpHandler.shared.getImage(img.thumbnail) { result in
                 cell.listImage.image = result
             }
@@ -57,7 +57,7 @@ extension FavoritesViewController: UITableViewDataSource{
     
 }
 
-extension FavoritesViewController: UITableViewDelegate{
+extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
@@ -78,7 +78,7 @@ extension FavoritesViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let cellBook = viewModel.favBooks[indexPath.row]
-            viewModel.delBook(book:cellBook)
+            viewModel.delBook(book: cellBook)
         }
     }
 }

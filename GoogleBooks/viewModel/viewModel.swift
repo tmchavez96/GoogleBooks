@@ -10,14 +10,14 @@ import Foundation
 
 
 class viewModel {
-    var Books:[Book]
+    var Books: [Book]
     
-    init(){
+    init() {
         Books = []
     }
     
     
-    func getBooks(_ search:String){
+    func getBooks(_ search: String) {
         httpHandler.shared.searchFor(search) {
             [weak self] result in
             self?.Books = result

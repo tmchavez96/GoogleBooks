@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func setup(){
+    func setup() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController?.searchBar.delegate = self as UISearchBarDelegate
@@ -55,9 +55,9 @@ extension SearchViewController: UISearchBarDelegate {
     
 }
 
-extension SearchViewController: UICollectionViewDataSource{
+extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(viewModel.getSearchCount() == 0 && !firstLoad){
+        if(viewModel.getSearchCount() == 0 && !firstLoad) {
             let noresVC = storyboard?.instantiateViewController(withIdentifier: "NoResults") as! NoResults
             navigationController?.view.backgroundColor = .white //remove black flicker on top right
             navigationController?.pushViewController(noresVC, animated: true)
@@ -70,9 +70,9 @@ extension SearchViewController: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookSearchCell", for: indexPath) as! BookSearchCell
         let cellBook = viewModel.getSearchBookFromIndex(indexPath.row)
         cell.CellTitle.text = cellBook?.details.title
-        if let img = cellBook?.details.image{
+        if let img = cellBook?.details.image {
             httpHandler.shared.getImage(img.thumbnail) { result in
-                if let image:UIImage = result{
+                if let image: UIImage = result {
                     cell.CellImage.image = image
                 }
             }
@@ -111,7 +111,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-extension SearchViewController: bookSearcher{
+extension SearchViewController: bookSearcher {
     func updateView() {
         DispatchQueue.main.async {
             self.CollectionView.reloadData()

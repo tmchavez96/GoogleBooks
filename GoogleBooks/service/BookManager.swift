@@ -12,10 +12,10 @@ import CoreData
 
 //bookDAO - data accsess object
 //implements singleton
-final class BookManager{
+final class BookManager {
     
     static var shared = BookManager()
-    private init(){}
+    private init() {}
     
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
@@ -51,9 +51,9 @@ final class BookManager{
     }
     
     //MARK: save a book
-    func saveBook(_ book:Book){
+    func saveBook(_ book: Book) {
         let entity = NSEntityDescription.entity(forEntityName: "BookStorage", in: context)!
-        let coreBook = BookStorage(entity: entity , insertInto: context)
+        let coreBook = BookStorage(entity: entity, insertInto: context)
         coreBook.id = book.id
         coreBook.title = book.details.title
         coreBook.author = book.details.authors[0]
@@ -86,19 +86,20 @@ final class BookManager{
     }
     
     //MARK: check for a book
-    func checkForBook(_ book:Book) -> Bool{
+    func checkForBook(_ book: Book) -> Bool {
         let fetchRequest = NSFetchRequest<BookStorage>(entityName: "BookStorage")
         let idPredicate = NSPredicate(format: "id==%@", book.id)
         fetchRequest.predicate = idPredicate
         
-        do{
+        do {
             let coreBooks = try context.fetch(fetchRequest)
-            if coreBooks.count > 0{
+            //swiftlint:disable empty_count
+            if coreBooks.count > 0 {
                 return true
-            }else{
+            } else {
                 return false
             }
-        }catch{
+        } catch {
             print(error.localizedDescription)
         }
         return false

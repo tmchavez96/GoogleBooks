@@ -9,5 +9,5 @@
 import Foundation
 
 protocol BookHandler {
-     func searchFor(_ search:String, completion: @escaping ([Book]) -> Void)
+     func searchFor(_ search: String, completion: @escaping ([Book]) -> Void)
 }

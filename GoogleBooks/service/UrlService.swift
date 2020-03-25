@@ -14,7 +14,7 @@ class UrlService {
     
     
     
-    static func getSearchUrl(_ searchStr:String) -> URL?{
+    static func getSearchUrl(_ searchStr: String) -> URL? {
         let encodeStr = base + (searchStr.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
         print(encodeStr)
         let url = URL(string: encodeStr)

@@ -9,39 +9,39 @@
 import Foundation
 import CoreData
 
-struct BookResponse: Decodable{
-    var totalItems:Int
+struct BookResponse: Decodable {
+    var totalItems: Int
     var items: [Book]
 }
 
-struct Book: Decodable{
+struct Book: Decodable {
     var id: String
     var details: BookDetails
     
-    private enum CodingKeys:  String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case details = "volumeInfo"
     }
     
-    init(coreBook: BookStorage){
+    init(coreBook: BookStorage) {
         id = coreBook.id!
         details = BookDetails(coreBook)
     }
-    init(manualId:String, title:String,authors:[String], pageCount:Int, desc:String,rating:Double,
-         imagePath:String){
+    init(manualId: String, title: String, authors: [String], pageCount: Int, desc: String, rating: Double,
+         imagePath: String) {
         id = manualId
         details = BookDetails(title: title, authors: authors, pageCount: pageCount, desc: desc, rating: rating, imagePath: imagePath)
     }
 }
 
-struct BookDetails: Decodable{
+struct BookDetails: Decodable {
     var title: String?
     var authors: [String]
     var pageCount: Int?
     var desc: String?
     var rating: Double?
     var image: BookImage?
-    private enum CodingKeys:  String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case title
         case authors
         case pageCount
@@ -49,7 +49,7 @@ struct BookDetails: Decodable{
         case rating = "averageRating"
         case image = "imageLinks"
     }
-    init(_ coreBook: BookStorage){
+    init(_ coreBook: BookStorage) {
         title = coreBook.title ?? "Title N/A"
         authors = [coreBook.author ?? "Author N/A"]
         pageCount = Int(coreBook.pageCount)
@@ -57,8 +57,8 @@ struct BookDetails: Decodable{
         rating = coreBook.rating
         image = BookImage(coreBook)
     }
-    init( title:String,authors:[String], pageCount:Int, desc:String,rating:Double,
-          imagePath:String){
+    init( title: String, authors: [String], pageCount: Int, desc: String, rating: Double,
+          imagePath: String) {
         self.title = title
         self.authors = authors
         self.pageCount = pageCount
@@ -68,13 +68,13 @@ struct BookDetails: Decodable{
     }
 }
 
-struct BookImage: Decodable{
+struct BookImage: Decodable {
     var thumbnail: String
     
-    init(_ coreBook: BookStorage){
+    init(_ coreBook: BookStorage) {
         thumbnail = coreBook.imageURL ?? ""
     }
-    init(_ imagePath:String){
+    init(_ imagePath: String) {
         thumbnail = imagePath
     }
 }

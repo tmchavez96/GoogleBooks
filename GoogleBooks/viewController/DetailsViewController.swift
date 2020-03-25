@@ -21,16 +21,16 @@ class DetailsViewController: UIViewController {
     var curBook: Book!
     var viewModel: BookViewModel!
     var isFavorite: Bool = false {
-        didSet{
+        didSet {
             setup()
         }
     }
     
     @IBAction func favoriteToggled(_ sender: Any) {
-        if(!isFavorite){
+        if(!isFavorite) {
             viewModel.saveBook(book: curBook)
             favoriteButton.setTitle("Remove from favorites", for: .normal)
-        }else{
+        } else {
             viewModel.delBook(book: curBook)
             favoriteButton.setTitle("Add to favorites", for: .normal)
         }
@@ -52,10 +52,10 @@ class DetailsViewController: UIViewController {
     }
     
     
-    func setup(){
-        if let img = curBook.details.image{
+    func setup() {
+        if let img = curBook.details.image {
             httpHandler.shared.getImage(img.thumbnail) { [weak self] result in
-                if let image:UIImage = result{
+                if let image: UIImage = result {
                     self?.detailsImage.image = image
                 }
             }
@@ -65,14 +65,14 @@ class DetailsViewController: UIViewController {
         detailsPageCount.text = String(curBook.details.pageCount ?? 0)
         detailsRating.text = String(curBook.details.rating ?? 0.0)
         detailsDesc.text = curBook.details.desc
-        if(isFavorite){
+        if(isFavorite ) {
             favoriteButton.setTitle("Remove from favorites", for: .normal)
-        }else{
+        } else {
             favoriteButton.setTitle("Add to favorites", for: .normal)
         }
     }
     
-    func checkFavorites(){
+    func checkFavorites() {
         isFavorite = viewModel.checkForBook(book: curBook)
     }
     
